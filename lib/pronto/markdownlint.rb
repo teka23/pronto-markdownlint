@@ -44,7 +44,7 @@ module Pronto
 
       def run_stylelint(patch)
         escaped_file_path = Shellwords.escape(patch.new_file_full_path.to_s)
-        `markdownlint-cli2 #{escaped_file_path}`
+        `PATH=$(npm bin):$PATH markdownlint-cli2 #{escaped_file_path}`
 
         JSON.parse(File.read("./markdownlint-results.json"))
       end
